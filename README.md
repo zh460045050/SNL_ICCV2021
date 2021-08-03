@@ -26,10 +26,15 @@ More novel nonlocal blocks defined with other type graph filters will release so
 ## Getting Starte
 ### Requirements
 PyTorch >= 0.4.1 or 1.0
+
 Python >= 3.5
+
 torchvision >= 0.2.1
+
 termcolor >= 1.1.0
+
 tensorboardX >= 1.9
+
 opencv >= 3.4
 
 ### Classification
