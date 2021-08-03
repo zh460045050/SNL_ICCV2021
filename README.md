@@ -57,7 +57,7 @@ year = \{2021\}</br>
 \}
 
 ### Acknowledgement
-This code and our experiments are conducted based on the release code of [CGNL][CGNL_url] / [mmsegmentation framework][mmsegmentation_url] / [3D-ResNet framework][3D-ResNet_url][https://github.com/kenshohara/3D-ResNets-PyTorch]. Here we thank for their remarkable works.
+This code and our experiments are conducted based on the release code of [CGNL][CGNL_url] / [mmsegmentation framework][mmsegmentation_url] / [3D-ResNet framework][3D-ResNet_url]. Here we thank for their remarkable works.
 
 [3D-ResNet_url]: https://github.com/kenshohara/3D-ResNets-PyTorch
 [mmsegmentation_url]: https://github.com/open-mmlab/mmsegmentation
