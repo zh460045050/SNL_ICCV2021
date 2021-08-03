@@ -25,7 +25,7 @@ More novel nonlocal blocks defined with other type graph filters will release so
 
 ## Getting Starte
 ### Requirements
-PyTorch >= 0.4.1 or 1.0
+PyTorch >= 0.4.1
 
 Python >= 3.5
 
