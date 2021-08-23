@@ -55,7 +55,7 @@ We also give the module/config implementated for semantic segmentation based on 
 2. Putting ''snl_head.py'' into ''mmsegmentation/mmseg/models/decode_heads''
 3. registering our ''SNLHead'' by editing ''mmsegmentation/mmseg/models/decode_heads/\_\_init\_\_.py'' \
 3-1. adding: ``from .snl_head import SNLHead`` \
-3-2. adding ''SNLHead'' at the end of the list ''\_\_all\_\_'' \
+3-2. adding ''SNLHead'' at the end of the list ''\_\_all\_\_.py''
 4. putting ''configs/snl'' into ``mmsegmentation/configs''
 5. putting ''configs/_base_/models/snl_r50-d8.py'' into ''mmsegmentation/configs/models''
 7. run: \
