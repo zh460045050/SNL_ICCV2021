@@ -54,12 +54,13 @@ We also give the module/config implementated for semantic segmentation based on 
 1. preparing environment of [mmsegmentation framework][mmsegmentation_url]
 2. Putting ''snl_head.py'' into ''mmsegmentation/mmseg/models/decode_heads''
 3. registering our ''SNLHead'' by editing ''mmsegmentation/mmseg/models/decode_heads/\_\_init\_\_.py''
-3-1. adding ''from .snl_head import SNLHead''
-3-2. adding ''SNLHead'' at the end of the list ''\_\_all\_\_'' 
+``adding from .snl_head import SNLHead''
+``adding SNLHead'' at the end of the list ''\_\_all\_\_'' 
 4. putting ''configs/snl'' into ``mmsegmentation/configs''
 5. putting ''configs/_base_/models/snl_r50-d8.py'' into ''mmsegmentation/configs/models''
-7. run ''CUDA_VISIBLE_DEVICES=3 python tools/train_flops.py configs/snl/snl_r50-d8_512x1024_40k_cityscapes.py 
-	--work-dir result_snl '
+7. run 
+``CUDA_VISIBLE_DEVICES=3 python tools/train_flops.py configs/snl/snl_r50-d8_512x1024_40k_cityscapes.py 
+	--work-dir result_snl 
 8. the training log and checkpoint are saving in "result_snl"
 
 Note that our experiments is done with only a Nvidia 3090 GPU, if user want to use multi-gpu for training, please refer to [mmsegmentation framework][mmsegmentation_url].
