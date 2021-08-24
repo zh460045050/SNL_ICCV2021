@@ -1,7 +1,7 @@
 # Spectral Nonlocal Block
 
 ## Overview
-Official implementation of the paper: Unifying Nonlocal Blocks for Neural Networks (ICCV'21)
+Official implementation of the paper: [Unifying Nonlocal Blocks for Neural Networks][paper_url] (ICCV'21)
 
 ## Spectral View of Nonlocal Block
 Our work provide a novel perspective for the model design of non-local blocks called **the Spectral View of Non-local**. In this view, the non-local block can be seen as **operating a set of graph filters on a fully connected weighted graph**. Our spectral view can help to therorotivally anaylize exsiting non-local blocks and design novel non-local block with the help of graph signal processing (e.g. the graph neural networks).
@@ -80,5 +80,6 @@ This code and our experiments are conducted based on the release code of [CGNL][
 [3D-ResNet_url]: https://github.com/kenshohara/3D-ResNets-PyTorch
 [mmsegmentation_url]: https://github.com/open-mmlab/mmsegmentation
 [CGNL_url]: https://github.com/KaiyuYue/cgnl-network.pytorch
+[paper_url]: https://arxiv.org/abs/2108.02451
 
 
