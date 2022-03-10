@@ -1,13 +1,3 @@
-# --------------------------------------------------------
-# CGNL Network
-# Copyright (c) 2018 Kaiyu Yue
-# Licensed under The MIT License [see LICENSE for details]
-# --------------------------------------------------------
-
-"""Functions for model building.
-   Based on https://github.com/pytorch/vision
-"""
-
 import math
 import torch
 import os
@@ -17,6 +7,8 @@ from termcolor import cprint
 from collections import OrderedDict
 from model.nls.basic import Stage
 from model.nls.cgnl import SpatialCGNLx
+from model.nls.cc import CrissCrossAttention
+from model.nls.anl import APNB
 
 __all__ = ['ResNet', 'resnet50', 'resnet101', 'resnet152']
 
@@ -192,6 +184,16 @@ class ResNet(nn.Module):
     def _addNonlocal(self, in_planes, sub_planes, nl_type='nl', stage_num=None, is_sys=True, is_norm=True):
         if nl_type == 'cgnl':
             return SpatialCGNLx(in_planes, sub_planes, is_sys=is_sys, is_norm=is_norm)
+        elif nl_type == 'cc':
+            layers = []
+            for i in range(stage_num):
+                layers.append(CrissCrossAttention(in_planes, sub_planes))
+            return nn.Sequential(*layers)
+        elif nl_type == 'anl':
+            layers = []
+            for i in range(stage_num):
+                layers.append(APNB(in_planes, in_planes, sub_planes, sub_planes))
+            return nn.Sequential(*layers)
         else:
             return Stage(
                 in_planes, sub_planes, stage_num=stage_num, nl_type=nl_type, is_sys=is_sys, is_norm=is_norm)
@@ -245,8 +247,6 @@ class ResNet(nn.Module):
         x = self.dropout(x)
         x = self.fc(x)
 
-        if self.nl_type == 'nl_lim':
-            return att, x
         return x
 
 
