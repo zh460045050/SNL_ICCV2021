@@ -2,6 +2,8 @@ import torch.nn as nn
 import math
 import torch.utils.model_zoo as model_zoo
 from model.nls.cgnl import SpatialCGNLx
+from model.nls.cc import CrissCrossAttention
+from model.nls.anl import APNB
 
 from model.nls.basic import Stage
 __all__ = ['PreResNet', 'preresnet20', 'preresnet32', 'preresnet44', 'preresnet56',
@@ -214,6 +216,16 @@ class PreResNet(nn.Module):
     def _addNonlocal(self, in_planes, sub_planes, nl_type='nl', stage_num=None, is_sys=True, is_norm=True):
         if nl_type == 'cgnl':
             return SpatialCGNLx(in_planes, sub_planes, is_sys=is_sys, is_norm=is_norm)
+        elif nl_type == 'cc':
+            layers = []
+            for i in range(stage_num):
+                layers.append(CrissCrossAttention(in_planes, sub_planes))
+            return nn.Sequential(*layers)
+        elif nl_type == 'anl':
+            layers = []
+            for i in range(stage_num):
+                layers.append(APNB(in_planes, in_planes, sub_planes, sub_planes))
+            return nn.Sequential(*layers)
         else:
             return Stage(
                 in_planes, sub_planes, stage_num=stage_num, nl_type=nl_type, is_sys=is_sys, is_norm=is_norm)
